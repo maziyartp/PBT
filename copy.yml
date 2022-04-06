@@ -1,0 +1,11 @@
+---
+
+- hosts: ITTEST
+
+  tasks:
+  - name: Copy File
+    win_copy:
+      src: /home/administrator/test1.pdf
+      dest: C:\ansible_examples\
+      remote_src: no
+
