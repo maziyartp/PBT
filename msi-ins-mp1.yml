@@ -1,0 +1,25 @@
+---
+
+- name: Installing SwyxIt!  MSI 
+
+  hosts: ITTEST
+
+  tasks:
+
+    - name: Download the SwyxIt!  installer
+
+      win_copy:
+
+        src: /mnt/swyx/swyxit_13.10.0.0_64bit_german.msi
+
+        dest: C:\ansible_examples\swyxit_13.10.0.0_64bit_german.msi
+
+        remote_src: no
+
+
+    - name: Install the SwyxIt! 
+
+      win_package: 
+        path: C:\ansible_examples\swyxit_13.10.0.0_64bit_german.msi
+        arguments: '/qb+ ADDLOCAL="PhoneClient,ScriptEditor,OfficeUCSupport,Outlook2007Support,EstosAccess,ClientMeeting,FaxClient,SwyxMeeting"'
+        state: present
